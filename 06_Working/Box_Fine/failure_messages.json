@@ -1,0 +1,150 @@
+[
+  {
+    "text": "This software is licensed for non-commercial use only.",
+    "type": "WARNING"
+  },
+  {
+    "text": "CAD processing via DLL",
+    "type": "INFO"
+  },
+  {
+    "text": "CAD Processing Version Info\n    ACIS version installed:    33.0.1\n    ACIS version used:    33.0.1",
+    "type": "INFO"
+  },
+  {
+    "text": "Starting adaptive port meshing.",
+    "type": "INFO"
+  },
+  {
+    "text": "Mode calculation for port 1:",
+    "type": "INFO"
+  },
+  {
+    "text": "CAD processing via DLL",
+    "type": "INFO"
+  },
+  {
+    "text": "CAD Processing Version Info\n    ACIS version installed:    33.0.1\n    ACIS version used:    33.0.1",
+    "type": "INFO"
+  },
+  {
+    "text": "Using Generalized port mode solver.",
+    "type": "INFO"
+  },
+  {
+    "text": "Port mode solver: Detected dispersive material(s) at port 1. \nUsing a constant approximation of dispersive material(s) at 150 GHz and neglecting loss terms.  More...",
+    "type": "INFO"
+  },
+  {
+    "text": "Pass 1 successfully completed.",
+    "type": "INFO"
+  },
+  {
+    "text": "CAD processing via DLL",
+    "type": "INFO"
+  },
+  {
+    "text": "CAD Processing Version Info\n    ACIS version installed:    33.0.1\n    ACIS version used:    33.0.1",
+    "type": "INFO"
+  },
+  {
+    "text": "2026-11-11 03:07:56   current system memory usage reached 90% (15 GB)",
+    "type": "WARNING"
+  },
+  {
+    "text": "Pass 2 successfully completed. Delta (Line Imp.): 2.99%",
+    "type": "INFO"
+  },
+  {
+    "text": "CAD processing via DLL",
+    "type": "INFO"
+  },
+  {
+    "text": "CAD Processing Version Info\n    ACIS version installed:    33.0.1\n    ACIS version used:    33.0.1",
+    "type": "INFO"
+  },
+  {
+    "text": "Pass 3 successfully completed. Delta (Line Imp.): 1.27%",
+    "type": "INFO"
+  },
+  {
+    "text": "CAD processing via DLL",
+    "type": "INFO"
+  },
+  {
+    "text": "CAD Processing Version Info\n    ACIS version installed:    33.0.1\n    ACIS version used:    33.0.1",
+    "type": "INFO"
+  },
+  {
+    "text": "Pass 4 successfully completed. Delta (Line Imp.): 0.47%",
+    "type": "INFO"
+  },
+  {
+    "text": "Adaptive port meshing finished.",
+    "type": "INFO"
+  },
+  {
+    "text": "This software is licensed for non-commercial use only.",
+    "type": "WARNING"
+  },
+  {
+    "text": "2026-11-11 03:08:25   current system memory usage reached 90% (15 GB)",
+    "type": "WARNING"
+  },
+  {
+    "text": "CAD processing via DLL",
+    "type": "INFO"
+  },
+  {
+    "text": "CAD Processing Version Info\n    ACIS version installed:    33.0.1\n    ACIS version used:    33.0.1",
+    "type": "INFO"
+  },
+  {
+    "text": "2026-11-11 03:08:26   current system memory usage reached 85% (14 GB)",
+    "type": "WARNING"
+  },
+  {
+    "text": "Matrix computation (PBA)\n    [Perfect Boundary Approximation (PBA), version: default]\n    [GPU acceleration: off (by user)]\nMore...",
+    "type": "INFO"
+  },
+  {
+    "text": "Geometry representation: compact",
+    "type": "INFO"
+  },
+  {
+    "text": "2026-11-11 03:08:28   current system memory usage reached 90% (15 GB)",
+    "type": "WARNING"
+  },
+  {
+    "text": "Using Generalized port mode solver.",
+    "type": "INFO"
+  },
+  {
+    "text": "Port mode solver: Detected dispersive material(s) at port 1. \nUsing a constant approximation of dispersive material(s) at 150 GHz and neglecting loss terms.  More...",
+    "type": "INFO"
+  },
+  {
+    "text": "Solver Settings:\nExcited port mode: 1 (1) \n[Frequency domain results normalized to default signal]\nExcitation duration: 1.77727437e-001 ns \nSteady state accuracy limit: -60 dB \nMaximum number of time steps: 455992 \nTime step width:\n     without subcycles: 7.795195848e-006 ns\n     used: 7.795195848e-006 ns\nNumber of threads used: 4",
+    "type": "INFO"
+  },
+  {
+    "text": "Project cannot be closed while a solver is running.\nPlease abort the solver first.\n\nTo release the frontend license use \"File: Release Frontend License\".",
+    "type": "INFO"
+  },
+  {
+    "text": "Project cannot be closed while a solver is running.\nPlease abort the solver first.\n\nTo release the frontend license use \"File: Release Frontend License\".",
+    "type": "INFO"
+  },
+  {
+    "text": "Solver run aborted by user (keeping results).",
+    "type": "WARNING"
+  },
+  {
+    "text": "Successfully finished Secondary Quantity Evaluation.",
+    "type": "INFO"
+  },
+  {
+    "text": "7 warnings occurred.",
+    "type": "WARNING"
+  }
+]

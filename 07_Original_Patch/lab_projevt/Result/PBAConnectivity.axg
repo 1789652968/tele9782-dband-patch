@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSTAuxiliaryGeometry version="20170928">
+  <Objects>
+    <Object name="Components\component1:polyimide substrate" id="1"/>
+    <Object name="Components\component1:ground Plane" id="2"/>
+    <Object name="Components\component1:rectangular_patch" id="3"/>
+  </Objects>
+  <Materials/>
+  <Groups>
+    <Group name="Isolators" type="Isolator" ID="1">
+      <Item name="Components\component1:polyimide substrate" type="solid" id="1"/>
+    </Group>
+    <Group name="Unconsidered" type="Isolator" ID="1">
+      <Item name="Components\component1:ground Plane" type="solid" id="2"/>
+      <Item name="Components\component1:rectangular_patch" type="solid" id="3"/>
+    </Group>
+  </Groups>
+</CSTAuxiliaryGeometry>

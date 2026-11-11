@@ -1,0 +1,53 @@
+{
+  "operating_GHz": 150,
+  "S11_operating_dB": -13.424486159818068,
+  "minimum_S11_dB": -38.858690881506696,
+  "minimum_S11_frequency_GHz": 148.83999633789062,
+  "analytical_frequency_GHz": 152.00026974640497,
+  "analytical_difference_percent": 2.0791235527324368,
+  "bandwidth": {
+    "f_low_GHz": 147.10578350191864,
+    "f_high_GHz": 150.61862023799353,
+    "BW_GHz": 3.512836736074888,
+    "FBW_percent": 2.3597909287568193,
+    "left_censored": false,
+    "right_censored": false
+  },
+  "directivity_dBi": 7.460167560539725,
+  "realized_gain_dBi": 5.804433671510463,
+  "radiation_efficiency_percent": 71.55315084418604,
+  "total_efficiency_percent": 68.30092904525017,
+  "sphere": {
+    "grid_step_deg": 2,
+    "spherical_mean_D_linear": 0.9991082860968514,
+    "normalization_error_percent": -0.08917139031485721,
+    "D_from_pattern_shape_dBi": 7.463874391957168,
+    "reported_grid_max_dBi": 7.46,
+    "mainbeam_theta_deg": 4.0,
+    "mainbeam_phi_deg": 264.0
+  },
+  "mesh_delta_directivity_dB": 0.03728030347618727,
+  "mesh_delta_frequency_percent": 0.5643619716193078,
+  "verification": {
+    "selected_working_project": "D:\\TELE9782\\Project_Final\\06_Working\\Box_Fine\\Box_Fine.cst",
+    "delivered_project": "D:\\TELE9782\\Project_Final\\01_CST_Project\\TELE9782_DBand_Patch_Final.cst",
+    "reopened_before_fresh_run": true,
+    "reopened_after_fresh_run": true,
+    "parameters_match": true,
+    "port_present": true,
+    "farfield_monitor_count": 13,
+    "S11_sample_count": 1001,
+    "reopen_max_complex_S11_difference": 0.0,
+    "rerun_max_complex_S11_difference": 4.985546416924428e-06,
+    "rerun_max_directivity_difference_dB": 2.96341473182693e-05,
+    "final_reopen_max_complex_S11_difference": 0.0,
+    "solver": {
+      "message": null,
+      "state": "SUCCESS"
+    }
+  },
+  "peak_sampled_realized_gain_dBi": 5.981550314733948,
+  "peak_sampled_realized_gain_frequency_GHz": 149.0,
+  "peak_sampled_directivity_dBi": 7.57031450218821,
+  "peak_sampled_directivity_frequency_GHz": 154.0
+}

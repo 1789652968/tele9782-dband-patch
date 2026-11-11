@@ -1,0 +1,80 @@
+{
+    "parameters": [
+        {
+            "expr": "0.667",
+            "name": "patch_width",
+            "value": "0.667"
+        },
+        {
+            "expr": "0.521",
+            "name": "patch_length",
+            "value": "0.521"
+        },
+        {
+            "expr": "0.04",
+            "name": "substrate_h",
+            "value": "0.04"
+        },
+        {
+            "expr": "0.09",
+            "name": "feed_width",
+            "value": "0.09"
+        },
+        {
+            "expr": "0.19",
+            "name": "inset_length",
+            "value": "0.19"
+        },
+        {
+            "expr": "0.02",
+            "name": "inset_gap",
+            "value": "0.02"
+        },
+        {
+            "expr": "1.4",
+            "name": "ground_width",
+            "value": "1.4"
+        },
+        {
+            "expr": "1.4",
+            "name": "ground_length",
+            "value": "1.4"
+        },
+        {
+            "expr": "0.002",
+            "name": "metal_thickness",
+            "value": "0.002"
+        },
+        {
+            "expr": "0.5",
+            "name": "launch_length",
+            "value": "0.5"
+        },
+        {
+            "expr": "0.25",
+            "name": "port_halfwidth",
+            "value": "0.25"
+        },
+        {
+            "expr": "20",
+            "name": "mesh_near",
+            "value": "20"
+        },
+        {
+            "expr": "30",
+            "name": "mesh_box",
+            "value": "30"
+        },
+        {
+            "expr": "3.5",
+            "name": "eps_r",
+            "value": "3.5"
+        },
+        {
+            "expr": "0.0027",
+            "name": "loss_tangent",
+            "value": "0.0027"
+        }
+    ],
+    "version": 1
+}

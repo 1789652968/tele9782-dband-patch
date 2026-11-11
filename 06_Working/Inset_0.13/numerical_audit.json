@@ -1,0 +1,98 @@
+{
+  "s11_min_freq_GHz": 148.55999755859375,
+  "s11_min_dB": -8.165128576604364,
+  "matched_bands": [],
+  "max_abs_S11": 0.9033824185223678,
+  "port_reactance_zero_crossings": [
+    {
+      "f_GHz": 144.01973224110924,
+      "R_ohm": 12.966944951715638
+    },
+    {
+      "f_GHz": 151.45081479340672,
+      "R_ohm": 145.4145469352904
+    }
+  ],
+  "farfield_checks": [
+    {
+      "f_GHz": 130.0,
+      "eta_rad": 0.519366844429075,
+      "eta_total": 0.09551161267964797,
+      "gain_identity_residual_dB": -2.5895765860539655e-06,
+      "Pstim_W": 0.5,
+      "Paccepted_W": 0.09195004812507926,
+      "Prad_W": 0.04775580633982399,
+      "Pmetal_W": 0.02915103335922469,
+      "Pdielectric_W": 0.017149183259696617,
+      "Poutgoing_W": 0.40804995187492077,
+      "power_balance_residual_W": -0.0021059748336660425,
+      "power_balance_residual_percent_accepted": -2.2903466356007707,
+      "eta_power": 0.519366844429075,
+      "farfield_power_residual_W": 0.0
+    },
+    {
+      "f_GHz": 140.0,
+      "eta_rad": 0.6336027443773937,
+      "eta_total": 0.2737478081627996,
+      "gain_identity_residual_dB": -5.430848064591487e-07,
+      "Pstim_W": 0.5000000000000001,
+      "Paccepted_W": 0.21602479676109707,
+      "Prad_W": 0.13687390408139982,
+      "Pmetal_W": 0.044303158861771316,
+      "Pdielectric_W": 0.026164599203224358,
+      "Poutgoing_W": 0.283975203238903,
+      "power_balance_residual_W": 0.00868313461470157,
+      "power_balance_residual_percent_accepted": 4.0195082902007275,
+      "eta_power": 0.6336027443773937,
+      "farfield_power_residual_W": 0.0
+    },
+    {
+      "f_GHz": 150.0,
+      "eta_rad": 0.6949988045547724,
+      "eta_total": 0.5722611169333681,
+      "gain_identity_residual_dB": -1.672250160567046e-08,
+      "Pstim_W": 0.5,
+      "Paccepted_W": 0.4116993534254839,
+      "Prad_W": 0.28613055846668406,
+      "Pmetal_W": 0.07262886611586261,
+      "Pdielectric_W": 0.03898875058241928,
+      "Poutgoing_W": 0.08830064657451608,
+      "power_balance_residual_W": 0.013951178260517963,
+      "power_balance_residual_percent_accepted": 3.3886811199578615,
+      "eta_power": 0.6949988045547724,
+      "farfield_power_residual_W": 0.0
+    },
+    {
+      "f_GHz": 160.0,
+      "eta_rad": 0.5972407063299273,
+      "eta_total": 0.21477369520529568,
+      "gain_identity_residual_dB": 5.360251160713148e-07,
+      "Pstim_W": 0.5,
+      "Paccepted_W": 0.17980497053281108,
+      "Prad_W": 0.10738684760264786,
+      "Pmetal_W": 0.04119018498401525,
+      "Pdielectric_W": 0.024700890151314304,
+      "Poutgoing_W": 0.3201950294671889,
+      "power_balance_residual_W": 0.006527047794833672,
+      "power_balance_residual_percent_accepted": 3.630070834800758,
+      "eta_power": 0.5972407063299273,
+      "farfield_power_residual_W": 0.0
+    },
+    {
+      "f_GHz": 170.0,
+      "eta_rad": 0.46192323577680944,
+      "eta_total": 0.09932878392904493,
+      "gain_identity_residual_dB": 7.000255726197224e-07,
+      "Pstim_W": 0.5,
+      "Paccepted_W": 0.10751654846070384,
+      "Prad_W": 0.04966439196452246,
+      "Pmetal_W": 0.0317060562904616,
+      "Pdielectric_W": 0.01941004024095214,
+      "Poutgoing_W": 0.39248345153929615,
+      "power_balance_residual_W": 0.00673605996476764,
+      "power_balance_residual_percent_accepted": 6.265137842691814,
+      "eta_power": 0.46192323577680944,
+      "farfield_power_residual_W": 0.0
+    }
+  ]
+}

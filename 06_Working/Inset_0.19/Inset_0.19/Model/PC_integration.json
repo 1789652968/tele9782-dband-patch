@@ -1,0 +1,84 @@
+{
+   "execution": {
+      "classname": "SMAPowerByEmagHPCFrame",
+      "libname": "SMAPowerByEmagUI"
+   },
+   "inputVariables": [
+      {
+         "name": "patch_width",
+         "type": "float",
+         "value": 0.667
+      },
+      {
+         "name": "patch_length",
+         "type": "float",
+         "value": 0.521
+      },
+      {
+         "name": "substrate_h",
+         "type": "float",
+         "value": 0.04
+      },
+      {
+         "name": "feed_width",
+         "type": "float",
+         "value": 0.09
+      },
+      {
+         "name": "inset_length",
+         "type": "float",
+         "value": 0.19
+      },
+      {
+         "name": "inset_gap",
+         "type": "float",
+         "value": 0.02
+      },
+      {
+         "name": "ground_width",
+         "type": "float",
+         "value": 1.4
+      },
+      {
+         "name": "ground_length",
+         "type": "float",
+         "value": 1.4
+      },
+      {
+         "name": "metal_thickness",
+         "type": "float",
+         "value": 0.002
+      },
+      {
+         "name": "launch_length",
+         "type": "float",
+         "value": 0.5
+      },
+      {
+         "name": "port_halfwidth",
+         "type": "float",
+         "value": 0.25
+      },
+      {
+         "name": "mesh_near",
+         "type": "float",
+         "value": 20.0
+      },
+      {
+         "name": "mesh_box",
+         "type": "float",
+         "value": 30.0
+      },
+      {
+         "name": "eps_r",
+         "type": "float",
+         "value": 3.5
+      },
+      {
+         "name": "loss_tangent",
+         "type": "float",
+         "value": 0.0027
+      }
+   ],
+   "outputVariables": []
+}

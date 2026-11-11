@@ -1,0 +1,13 @@
+{
+   "Author": "Admin",
+   "Comment": "",
+   "Last Problem Type": "High Frequency",
+   "Last Solver Type": "HF Time Domain",
+   "Last Solver Type Abb": "t",
+   "Mesh Cells": "262,197",
+   "Mesh Type": "Hexahedral",
+   "Modeler Unique ID": "5:box_fine.cst?a8122ef5040669e7fe19122fb25cec8e?10597:numberofparameters=15:port=1>mode=1>zre=0>zim=0:::eps_r?feed_width?ground_length?ground_width?inset_gap?inset_length?launch_length?loss_tangent?mesh_box?mesh_near?metal_thickness?patch_length?patch_width?port_halfwidth?substrate_h",
+   "ProjectVersion": "'# MWS Version: Version 2024.0 - Sep 01 2023 - ACIS 33.0.1 -",
+   "Results": "Time Domain: S-Parameter",
+   "Version": "3"
+}

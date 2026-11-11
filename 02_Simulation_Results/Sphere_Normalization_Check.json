@@ -1,0 +1,9 @@
+{
+  "grid_step_deg": 2,
+  "spherical_mean_D_linear": 0.9991082860968514,
+  "normalization_error_percent": -0.08917139031485721,
+  "D_from_pattern_shape_dBi": 7.463874391957168,
+  "reported_grid_max_dBi": 7.46,
+  "mainbeam_theta_deg": 4.0,
+  "mainbeam_phi_deg": 264.0
+}

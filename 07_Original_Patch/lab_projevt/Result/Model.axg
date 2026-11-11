@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSTAuxiliaryGeometry version="20170928" creator="modeler">
+  <Objects>
+    <Object name="Ports\port1 (Input_Port)" id="4">
+      <LineSet points="-0.135000005 -0.449999988 0.122000001 0.135000005 -0.449999988 0.122000001 0.135000005 -0.449999988 -0.00200000009 -0.135000005 -0.449999988 -0.00200000009 -0.135000005 -0.449999988 0.122000001" stripped="1" material="$PortMaterial$" text="1: Input_Port" short="1"/>
+    </Object>
+  </Objects>
+  <Materials/>
+  <Groups/>
+</CSTAuxiliaryGeometry>

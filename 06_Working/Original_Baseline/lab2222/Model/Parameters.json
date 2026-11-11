@@ -1,0 +1,41 @@
+{
+    "parameters": [
+        {
+            "descr": "(mm)wavelength at 2.4 Ghz",
+            "expr": "124.91",
+            "name": "wavelength",
+            "value": "124.91"
+        },
+        {
+            "descr": "(mm)half_wavelength at 2.4 Ghz",
+            "expr": "wavelength/2",
+            "name": "half_wavelength",
+            "value": "62.455"
+        },
+        {
+            "descr": "(mm)quarter_wavelength at 2.4 Ghz",
+            "expr": "wavelength/4",
+            "name": "quarter_wavelength",
+            "value": "31.2275"
+        },
+        {
+            "descr": "(mm)dipole radius",
+            "expr": "1",
+            "name": "dipole_radius",
+            "value": "1"
+        },
+        {
+            "descr": "(mm)feed length",
+            "expr": "1",
+            "name": "feed_length",
+            "value": "1"
+        },
+        {
+            "descr": "(mm)length of dipole antenna",
+            "expr": "54.5",
+            "name": "dipole_length",
+            "value": "54.5"
+        }
+    ],
+    "version": 1
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSTAuxiliaryGeometry version="20170928">
+  <Objects>
+    <Object name="Components\antenna:substrate" id="1"/>
+    <Object name="Components\antenna:ground" id="2"/>
+    <Object name="Components\antenna:patch" id="3"/>
+  </Objects>
+  <Materials/>
+  <Groups>
+    <Group name="Isolators" type="Isolator" ID="1">
+      <Item name="Components\antenna:substrate" type="solid" id="1"/>
+    </Group>
+    <Group name="Unconsidered" type="Isolator" ID="1">
+      <Item name="Components\antenna:ground" type="solid" id="2"/>
+      <Item name="Components\antenna:patch" type="solid" id="3"/>
+    </Group>
+  </Groups>
+</CSTAuxiliaryGeometry>

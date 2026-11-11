@@ -1,0 +1,29 @@
+{
+   "execution": {
+      "classname": "SMAPowerByEmagHPCFrame",
+      "libname": "SMAPowerByEmagUI"
+   },
+   "inputVariables": [
+      {
+         "name": "wavelength",
+         "type": "float",
+         "value": 124.91
+      },
+      {
+         "name": "dipole_radius",
+         "type": "float",
+         "value": 1.0
+      },
+      {
+         "name": "feed_length",
+         "type": "float",
+         "value": 1.0
+      },
+      {
+         "name": "dipole_length",
+         "type": "float",
+         "value": 54.5
+      }
+   ],
+   "outputVariables": []
+}

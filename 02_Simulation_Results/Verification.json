@@ -1,0 +1,18 @@
+{
+  "selected_working_project": "D:\\TELE9782\\Project_Final\\06_Working\\Box_Fine\\Box_Fine.cst",
+  "delivered_project": "D:\\TELE9782\\Project_Final\\01_CST_Project\\TELE9782_DBand_Patch_Final.cst",
+  "reopened_before_fresh_run": true,
+  "reopened_after_fresh_run": true,
+  "parameters_match": true,
+  "port_present": true,
+  "farfield_monitor_count": 13,
+  "S11_sample_count": 1001,
+  "reopen_max_complex_S11_difference": 0.0,
+  "rerun_max_complex_S11_difference": 4.985546416924428e-06,
+  "rerun_max_directivity_difference_dB": 2.96341473182693e-05,
+  "final_reopen_max_complex_S11_difference": 0.0,
+  "solver": {
+    "message": null,
+    "state": "SUCCESS"
+  }
+}

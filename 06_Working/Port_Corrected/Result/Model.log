@@ -1,0 +1,176 @@
+2026-11-10 21:09:46   Build version: 2024.0 Release from 2023-09-01 (change 1164796)
+
+2026-11-10 21:09:46   Starting adaptive port meshing.
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:09:46   Mode calculation for port 1:
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:09:47   
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:09:47   
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:09:49   Using Generalized port mode solver.
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:09:49   Port mode solver: Detected dispersive material(s) at port 1. 
+                      Using a constant approximation of dispersive material(s) at 150 GHz and neglecting loss terms.  More...
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:09:50     -------------------------------- F-Calc 150 --------------------------------
+                        Port   Mode   Type        Z-Wave        Z-Wave-Sigma  Z-Line        F-Cutoff
+                        1      1      QTEM        221           7.75e-006     53.9          ---
+                        ----------------------------------------------------------------------------
+
+2026-11-10 21:09:51   Pass 1 successfully completed. 
+2026-11-10 21:09:51   
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:09:51   
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:09:54     -------------------------------- F-Calc 150 --------------------------------
+                        Port   Mode   Type        Z-Wave        Z-Wave-Sigma  Z-Line        F-Cutoff
+                        1      1      QTEM        227           9.40e-006     53.7          ---
+                        ----------------------------------------------------------------------------
+
+2026-11-10 21:09:55   Pass 2 successfully completed. Delta (Line Imp.): 0.39%
+2026-11-10 21:09:55   
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:09:55   
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:09:59     -------------------------------- F-Calc 150 --------------------------------
+                        Port   Mode   Type        Z-Wave        Z-Wave-Sigma  Z-Line        F-Cutoff
+                        1      1      QTEM        235           7.48e-007     53.6          ---
+                        ----------------------------------------------------------------------------
+
+2026-11-10 21:10:00   Pass 3 successfully completed. Delta (Line Imp.): 0.09%
+2026-11-10 21:10:00   Adaptive port meshing finished. 
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:10:00   *** Warning ***
+
+                      Metal was found on the boundaries when searching for decoupling planes. Please
+                      consider increasing the distance between the structure and the boundaries.
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:10:00   *** Warning ***
+
+                      This software is licensed for non-commercial use only.
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:10:00   The following farfield monitor(s) have been adjusted to model box [-0.524931,
+                      0.524931, -0.5, 0.524928, -0.0268893, 0.158876]:
+                        farfield (f=130), farfield (f=140), farfield (f=150), farfield (f=160),
+                      farfield (f=170).
+                      For further information please check the page "Special Solver Parameters -
+                      Solver" in the Online Help.
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:10:01   
+                      Solver started at: 2026-11-10 21:10:01 +1100
+
+                        Module:  Time Domain: S-Parameter (Win 64)
+                        Version: 2024.0 Release from 2023-09-01 (change 1164796)
+
+2026-11-10 21:10:01   
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:10:01   
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:10:01   ======================================================================
+                       Solver cycle: 1
+                      ======================================================================
+
+                      Stimulation at port 1 (mode 1) 
+
+
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:10:01   Units settings: 
+
+                        Dimensions: mm
+                        Frequency:  GHz
+                        Time:       ns
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:10:01   The dispersive material update [Automatic] will be performed using the "Standard" update schema
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:10:11   *** Warning ***
+
+2026-11-10 21:10:11   377 mesh edges are represented in staircase mode and have been filled with PEC.
+                       More...
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:10:11   *** Error ***
+
+2026-11-10 21:10:11   Waveguide for port number 1 is too short. The waveguide must be homogeneous for at least three equidistant mesh planes 
+                      along propagation direction.
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:10:11   
+                      --------------------------------------------------------------------------------
+2026-11-10 21:10:11   *** Warning ***
+
+2026-11-10 21:10:11   Solver run aborted.
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:10:11   Frequency domain results unnormalized.
+
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:10:11   
+                        ----------------------------------------------------------------------------
+                                            Peak memory used (kB)         Free physical memory (kB) 
+                                                                          At begin     Minimum      
+                        ----------------------------------------------------------------------------
+                        Matrices calc.      0                             0            0            
+                        Solver run total    26580                         4961740      4858492      
+                        ----------------------------------------------------------------------------
+
+                      --------------------------------------------------------------------------------
+                      Solver Statistics:
+
+                        Hardware:
+                           Computer name:                 	DESKTOP-TA3H3G5 
+
+                           Number of CPU threads:               4
+                           Hardware info:                  	Hardware Accelerator Device not activated
+
+                        Number of mesh cells:             	57362
+                        Excitation duration:              	0.00000000e+000 ns 
+                        Calculation time for excitation:  	0 	s
+                        Number of calculated pulse widths:	0 
+                        Simulated number of time steps:   	0 
+                        Maximum number of time steps:     	0 
+                        Time step width:
+                           without subcycles:             	0.000000000e+000 ns
+                           used:                          	0.000000000e+000 ns
+
+                        Matrix calculation time:          	0 	s
+                        Solver setup time:                	0 	s
+                        Solver loop time:                 	0 	s
+                        Solver post-processing time:      	0 	s
+                                                          	------------
+                        Total solver time:                	0 	s
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:10:11   
+                        Adaptive port meshing time:          	14     	s
+                        Total solver time (all cycles):      	0      	s
+                        Solver initialization and clean-up:  	10     	s
+                                                             	------------
+                        Total simulation time:               	24     	s
+
+                      ------------------------------------------------------------------------------
+2026-11-10 21:10:11   Solver finished at: 2026-11-10 21:10:11 +1100
+
+
+
+                      ------------------------------------------------------------------------------

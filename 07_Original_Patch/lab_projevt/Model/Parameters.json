@@ -1,0 +1,55 @@
+{
+    "parameters": [
+        {
+            "expr": "150",
+            "name": "f0",
+            "value": "150"
+        },
+        {
+            "expr": "0.667",
+            "name": "patch_width",
+            "value": "0.667"
+        },
+        {
+            "expr": "0.521",
+            "name": "patch_length",
+            "value": "0.521"
+        },
+        {
+            "expr": "0.040",
+            "name": "substrate_h",
+            "value": "0.040"
+        },
+        {
+            "expr": "0.090",
+            "name": "feed_width",
+            "value": "0.090"
+        },
+        {
+            "expr": "0.150",
+            "name": "inset_length",
+            "value": "0.150"
+        },
+        {
+            "expr": "0.020",
+            "name": "inset_gap",
+            "value": "0.020"
+        },
+        {
+            "expr": "1.0",
+            "name": "ground_width",
+            "value": "1.0"
+        },
+        {
+            "expr": "1.0",
+            "name": "ground_length",
+            "value": "1.0"
+        },
+        {
+            "expr": "0.002",
+            "name": "metal_thickness",
+            "value": "0.002"
+        }
+    ],
+    "version": 1
+}

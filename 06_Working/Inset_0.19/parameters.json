@@ -1,0 +1,17 @@
+{
+  "loss_tangent": "0.0027",
+  "eps_r": "3.5",
+  "mesh_box": "30",
+  "mesh_near": "20",
+  "port_halfwidth": "0.25",
+  "launch_length": "0.5",
+  "metal_thickness": "0.002",
+  "ground_length": "1.4",
+  "ground_width": "1.4",
+  "inset_gap": "0.02",
+  "inset_length": "0.19",
+  "feed_width": "0.09",
+  "substrate_h": "0.04",
+  "patch_length": "0.521",
+  "patch_width": "0.667"
+}

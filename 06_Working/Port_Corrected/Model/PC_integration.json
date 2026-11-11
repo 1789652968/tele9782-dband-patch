@@ -1,0 +1,59 @@
+{
+   "execution": {
+      "classname": "SMAPowerByEmagHPCFrame",
+      "libname": "SMAPowerByEmagUI"
+   },
+   "inputVariables": [
+      {
+         "name": "f0",
+         "type": "float",
+         "value": 150.0
+      },
+      {
+         "name": "patch_width",
+         "type": "float",
+         "value": 0.667
+      },
+      {
+         "name": "patch_length",
+         "type": "float",
+         "value": 0.521
+      },
+      {
+         "name": "substrate_h",
+         "type": "float",
+         "value": 0.04
+      },
+      {
+         "name": "feed_width",
+         "type": "float",
+         "value": 0.09
+      },
+      {
+         "name": "inset_length",
+         "type": "float",
+         "value": 0.15
+      },
+      {
+         "name": "inset_gap",
+         "type": "float",
+         "value": 0.02
+      },
+      {
+         "name": "ground_width",
+         "type": "float",
+         "value": 1.0
+      },
+      {
+         "name": "ground_length",
+         "type": "float",
+         "value": 1.0
+      },
+      {
+         "name": "metal_thickness",
+         "type": "float",
+         "value": 0.002
+      }
+   ],
+   "outputVariables": []
+}

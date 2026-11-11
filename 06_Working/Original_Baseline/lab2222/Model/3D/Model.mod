@@ -1,0 +1,728 @@
+'# MWS Version: Version 2024.0 - Sep 01 2023 - ACIS 33.0.1 -
+
+'# length = mm
+'# frequency = GHz
+'# time = ns
+'# frequency range: fmin = 1.5 fmax = 3.5
+'# created = '[VERSION]2024.0|33.0.1|20230901[/VERSION]
+
+
+'@ use template: dipole Antenna at 2.4 Ghz.cfg
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+'set the units
+With Units
+    .SetUnit "Length", "um"
+    .SetUnit "Frequency", "GHz"
+    .SetUnit "Voltage", "V"
+    .SetUnit "Resistance", "Ohm"
+    .SetUnit "Inductance", "nH"
+    .SetUnit "Temperature",  "K"
+    .SetUnit "Time", "ns"
+    .SetUnit "Current", "A"
+    .SetUnit "Conductance", "S"
+    .SetUnit "Capacitance", "pF"
+End With
+
+'----------------------------------------------------------------------------
+
+'set the frequency range
+Solver.FrequencyRange "1.5", "3.5"
+
+'----------------------------------------------------------------------------
+
+Plot.DrawBox True
+
+With Background
+     .Type "Normal"
+     .Epsilon "1.0"
+     .Mu "1.0"
+     .XminSpace "0.0"
+     .XmaxSpace "0.0"
+     .YminSpace "0.0"
+     .YmaxSpace "0.0"
+     .ZminSpace "0.0"
+     .ZmaxSpace "0.0"
+End With
+
+With Boundary
+     .Xmin "expanded open"
+     .Xmax "expanded open"
+     .Ymin "expanded open"
+     .Ymax "expanded open"
+     .Zmin "expanded open"
+     .Zmax "expanded open"
+     .Xsymmetry "none"
+     .Ysymmetry "none"
+     .Zsymmetry "none"
+End With
+
+' switch on FD-TET setting for accurate farfields
+
+FDSolver.ExtrudeOpenBC "True"
+
+Mesh.FPBAAvoidNonRegUnite "True"
+Mesh.ConsiderSpaceForLowerMeshLimit "False"
+Mesh.MinimumStepNumber "5"
+
+With MeshSettings
+     .SetMeshType "Hex"
+     .Set "RatioLimitGeometry", "20"
+End With
+
+With MeshSettings
+     .SetMeshType "HexTLM"
+     .Set "RatioLimitGeometry", "20"
+End With
+
+PostProcess1D.ActivateOperation "vswr", "true"
+PostProcess1D.ActivateOperation "yz-matrices", "true"
+
+With FarfieldPlot
+	.ClearCuts ' lateral=phi, polar=theta
+	.AddCut "lateral", "0", "1"
+	.AddCut "lateral", "90", "1"
+	.AddCut "polar", "90", "1"
+End With
+
+'----------------------------------------------------------------------------
+
+Dim sDefineAt As String
+sDefineAt = "1.5;2.4;3.5"
+Dim sDefineAtName As String
+sDefineAtName = "1.5;2.4;3.5"
+Dim sDefineAtToken As String
+sDefineAtToken = "f="
+Dim aFreq() As String
+aFreq = Split(sDefineAt, ";")
+Dim aNames() As String
+aNames = Split(sDefineAtName, ";")
+
+Dim nIndex As Integer
+For nIndex = LBound(aFreq) To UBound(aFreq)
+
+Dim zz_val As String
+zz_val = aFreq (nIndex)
+Dim zz_name As String
+zz_name = sDefineAtToken & aNames (nIndex)
+
+' Define E-Field Monitors
+With Monitor
+    .Reset
+    .Name "e-field ("& zz_name &")"
+    .Dimension "Volume"
+    .Domain "Frequency"
+    .FieldType "Efield"
+    .MonitorValue  zz_val
+    .Create
+End With
+
+' Define H-Field Monitors
+With Monitor
+    .Reset
+    .Name "h-field ("& zz_name &")"
+    .Dimension "Volume"
+    .Domain "Frequency"
+    .FieldType "Hfield"
+    .MonitorValue  zz_val
+    .Create
+End With
+
+' Define Farfield Monitors
+With Monitor
+    .Reset
+    .Name "farfield ("& zz_name &")"
+    .Domain "Frequency"
+    .FieldType "Farfield"
+    .MonitorValue  zz_val
+    .ExportFarfieldSource "False"
+    .Create
+End With
+
+Next
+
+'----------------------------------------------------------------------------
+
+With MeshSettings
+     .SetMeshType "Tet"
+     .Set "Version", 1%
+End With
+
+With Mesh
+     .MeshType "Tetrahedral"
+End With
+
+'set the solver type
+ChangeSolverType("HF Frequency Domain")
+
+'----------------------------------------------------------------------------
+
+'@ new component: component1
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Component.New "component1"
+
+'@ define cylinder: component1:dipole
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+With Cylinder 
+     .Reset 
+     .Name "dipole" 
+     .Component "component1" 
+     .Material "PEC" 
+     .OuterRadius "dipole_radius" 
+     .InnerRadius "0.0" 
+     .Axis "z" 
+     .Zrange "-dipole_length/2", "dipole_length/2" 
+     .Xcenter "0" 
+     .Ycenter "0" 
+     .Segments "0" 
+     .Create 
+End With
+
+'@ define units
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+With Units 
+     .SetUnit "Length", "mm"
+     .SetUnit "Temperature", "K"
+     .SetUnit "Voltage", "V"
+     .SetUnit "Current", "A"
+     .SetUnit "Resistance", "Ohm"
+     .SetUnit "Conductance", "S"
+     .SetUnit "Capacitance", "pF"
+     .SetUnit "Inductance", "nH"
+     .SetUnit "Frequency", "GHz"
+     .SetUnit "Time", "ns"
+     .SetResultUnit "frequency", "frequency", "" 
+End With
+
+'@ define cylinder: component1:feed
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+With Cylinder 
+     .Reset 
+     .Name "feed" 
+     .Component "component1" 
+     .Material "PEC" 
+     .OuterRadius "dipole_radius" 
+     .InnerRadius "0.0" 
+     .Axis "z" 
+     .Zrange "-feed_length/2", "feed_length/2" 
+     .Xcenter "0" 
+     .Ycenter "0" 
+     .Segments "0" 
+     .Create 
+End With
+
+'@ boolean subtract shapes: component1:dipole, component1:feed
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Solid.Subtract "component1:dipole", "component1:feed"
+
+'@ pick center point
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Pick.PickCenterpointFromId "component1:dipole", "1"
+
+'@ pick center point
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Pick.PickCenterpointFromId "component1:dipole", "3"
+
+'@ define discrete port: 1
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+With DiscretePort 
+     .Reset 
+     .PortNumber "1" 
+     .Type "SParameter"
+     .Label ""
+     .Folder ""
+     .Impedance "50.0"
+     .Voltage "1.0"
+     .Current "1.0"
+     .Monitor "True"
+     .Radius "0.0"
+     .SetP1 "True", "-3.8981718325194e-17", "0", "-0.5"
+     .SetP2 "True", "-3.8981718325194e-17", "0", "0.5"
+     .InvertDirection "False"
+     .LocalCoordinates "False"
+     .Wire ""
+     .Position "end1"
+     .Create 
+End With
+
+'@ delete port: port1
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Port.Delete "1"
+
+'@ pick center point
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Pick.PickCenterpointFromId "component1:dipole", "1"
+
+'@ pick center point
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Pick.PickCenterpointFromId "component1:dipole", "3"
+
+'@ define discrete port: 1
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+With DiscretePort 
+     .Reset 
+     .PortNumber "1" 
+     .Type "SParameter"
+     .Label ""
+     .Folder ""
+     .Impedance "50.0"
+     .Voltage "1.0"
+     .Current "1.0"
+     .Monitor "True"
+     .Radius "0.0"
+     .SetP1 "True", "-3.8981718325194e-17", "0", "-0.5"
+     .SetP2 "True", "-3.8981718325194e-17", "0", "0.5"
+     .InvertDirection "False"
+     .LocalCoordinates "False"
+     .Wire ""
+     .Position "end1"
+     .Create 
+End With
+
+'@ define frequency domain solver parameters
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Mesh.SetCreator "High Frequency" 
+
+With FDSolver
+     .Reset 
+     .SetMethod "Tetrahedral", "General purpose" 
+     .OrderTet "Second" 
+     .OrderSrf "First" 
+     .Stimulation "All", "1" 
+     .ResetExcitationList 
+     .AutoNormImpedance "False" 
+     .NormingImpedance "50" 
+     .ModesOnly "False" 
+     .ConsiderPortLossesTet "True" 
+     .SetShieldAllPorts "False" 
+     .AccuracyHex "1e-6" 
+     .AccuracyTet "1e-4" 
+     .AccuracySrf "1e-3" 
+     .LimitIterations "False" 
+     .MaxIterations "0" 
+     .SetCalcBlockExcitationsInParallel "True", "True", "" 
+     .StoreAllResults "False" 
+     .StoreResultsInCache "False" 
+     .UseHelmholtzEquation "True" 
+     .LowFrequencyStabilization "True" 
+     .Type "Auto" 
+     .MeshAdaptionHex "False" 
+     .MeshAdaptionTet "True" 
+     .AcceleratedRestart "True" 
+     .FreqDistAdaptMode "Distributed" 
+     .NewIterativeSolver "True" 
+     .TDCompatibleMaterials "False" 
+     .ExtrudeOpenBC "True" 
+     .SetOpenBCTypeHex "Default" 
+     .SetOpenBCTypeTet "Default" 
+     .AddMonitorSamples "True" 
+     .CalcPowerLoss "True" 
+     .CalcPowerLossPerComponent "False" 
+     .SetKeepSolutionCoefficients "MonitorsAndMeshAdaptation" 
+     .UseDoublePrecision "False" 
+     .UseDoublePrecision_ML "True" 
+     .MixedOrderSrf "False" 
+     .MixedOrderTet "False" 
+     .PreconditionerAccuracyIntEq "0.15" 
+     .MLFMMAccuracy "Default" 
+     .MinMLFMMBoxSize "0.3" 
+     .UseCFIEForCPECIntEq "True" 
+     .UseEnhancedCFIE2 "True" 
+     .UseFastRCSSweepIntEq "false" 
+     .UseSensitivityAnalysis "False" 
+     .UseEnhancedNFSImprint "True" 
+     .UseFastDirectFFCalc "False" 
+     .RemoveAllStopCriteria "Hex"
+     .AddStopCriterion "All S-Parameters", "0.01", "2", "Hex", "True"
+     .AddStopCriterion "Reflection S-Parameters", "0.01", "2", "Hex", "False"
+     .AddStopCriterion "Transmission S-Parameters", "0.01", "2", "Hex", "False"
+     .RemoveAllStopCriteria "Tet"
+     .AddStopCriterion "All S-Parameters", "0.01", "2", "Tet", "True"
+     .AddStopCriterion "Reflection S-Parameters", "0.01", "2", "Tet", "False"
+     .AddStopCriterion "Transmission S-Parameters", "0.01", "2", "Tet", "False"
+     .AddStopCriterion "All Probes", "0.05", "2", "Tet", "True"
+     .RemoveAllStopCriteria "Srf"
+     .AddStopCriterion "All S-Parameters", "0.01", "2", "Srf", "True"
+     .AddStopCriterion "Reflection S-Parameters", "0.01", "2", "Srf", "False"
+     .AddStopCriterion "Transmission S-Parameters", "0.01", "2", "Srf", "False"
+     .SweepMinimumSamples "3" 
+     .SetNumberOfResultDataSamples "1001" 
+     .SetResultDataSamplingMode "Automatic" 
+     .SweepWeightEvanescent "1.0" 
+     .AccuracyROM "1e-4" 
+     .AddSampleInterval "", "", "1", "Automatic", "True" 
+     .AddSampleInterval "", "", "", "Automatic", "False" 
+     .MPIParallelization "False"
+     .UseDistributedComputing "False"
+     .NetworkComputingStrategy "RunRemote"
+     .NetworkComputingJobCount "3"
+     .UseParallelization "True"
+     .MaxCPUs "1024"
+     .MaximumNumberOfCPUDevices "2"
+End With
+
+With IESolver
+     .Reset 
+     .UseFastFrequencySweep "True" 
+     .UseIEGroundPlane "False" 
+     .SetRealGroundMaterialName "" 
+     .CalcFarFieldInRealGround "False" 
+     .RealGroundModelType "Auto" 
+     .PreconditionerType "Auto" 
+     .ExtendThinWireModelByWireNubs "False" 
+     .ExtraPreconditioning "False" 
+End With
+
+With IESolver
+     .SetFMMFFCalcStopLevel "0" 
+     .SetFMMFFCalcNumInterpPoints "6" 
+     .UseFMMFarfieldCalc "True" 
+     .SetCFIEAlpha "0.500000" 
+     .LowFrequencyStabilization "False" 
+     .LowFrequencyStabilizationML "True" 
+     .Multilayer "False" 
+     .SetiMoMACC_I "0.0001" 
+     .SetiMoMACC_M "0.0001" 
+     .DeembedExternalPorts "True" 
+     .SetOpenBC_XY "True" 
+     .OldRCSSweepDefintion "False" 
+     .SetRCSOptimizationProperties "True", "100", "0.00001" 
+     .SetAccuracySetting "Custom" 
+     .CalculateSParaforFieldsources "True" 
+     .ModeTrackingCMA "True" 
+     .NumberOfModesCMA "3" 
+     .StartFrequencyCMA "-1.0" 
+     .SetAccuracySettingCMA "Default" 
+     .FrequencySamplesCMA "0" 
+     .SetMemSettingCMA "Auto" 
+     .CalculateModalWeightingCoefficientsCMA "True" 
+     .DetectThinDielectrics "True" 
+End With
+
+'@ farfield plot options
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+With FarfieldPlot 
+     .Plottype "Polar" 
+     .Vary "angle1" 
+     .Theta "90" 
+     .Phi "90" 
+     .Step "1" 
+     .Step2 "1" 
+     .SetLockSteps "True" 
+     .SetPlotRangeOnly "False" 
+     .SetThetaStart "0" 
+     .SetThetaEnd "180" 
+     .SetPhiStart "0" 
+     .SetPhiEnd "360" 
+     .SetTheta360 "False" 
+     .SymmetricRange "False" 
+     .SetTimeDomainFF "False" 
+     .SetFrequency "-1" 
+     .SetTime "0" 
+     .SetColorByValue "True" 
+     .DrawStepLines "False" 
+     .DrawIsoLongitudeLatitudeLines "False" 
+     .ShowStructure "False" 
+     .ShowStructureProfile "False" 
+     .SetStructureTransparent "False" 
+     .SetFarfieldTransparent "False" 
+     .AspectRatio "Free" 
+     .ShowGridlines "True" 
+     .InvertAxes "False", "False" 
+     .SetSpecials "enablepolarextralines" 
+     .SetPlotMode "Directivity" 
+     .Distance "1" 
+     .UseFarfieldApproximation "True" 
+     .IncludeUnitCellSidewalls "True" 
+     .SetScaleLinear "False" 
+     .SetLogRange "40" 
+     .SetLogNorm "0" 
+     .DBUnit "0" 
+     .SetMaxReferenceMode "abs" 
+     .EnableFixPlotMaximum "False" 
+     .SetFixPlotMaximumValue "1.0" 
+     .SetInverseAxialRatio "False" 
+     .SetAxesType "user" 
+     .SetAntennaType "unknown" 
+     .Phistart "1.000000e+00", "0.000000e+00", "0.000000e+00" 
+     .Thetastart "0.000000e+00", "0.000000e+00", "1.000000e+00" 
+     .PolarizationVector "0.000000e+00", "1.000000e+00", "0.000000e+00" 
+     .SetCoordinateSystemType "spherical" 
+     .SetAutomaticCoordinateSystem "True" 
+     .SetPolarizationType "Linear" 
+     .SlantAngle 0.000000e+00 
+     .Origin "bbox" 
+     .Userorigin "0.000000e+00", "0.000000e+00", "0.000000e+00" 
+     .SetUserDecouplingPlane "False" 
+     .UseDecouplingPlane "False" 
+     .DecouplingPlaneAxis "X" 
+     .DecouplingPlanePosition "0.000000e+00" 
+     .LossyGround "False" 
+     .GroundEpsilon "1" 
+     .GroundKappa "0" 
+     .EnablePhaseCenterCalculation "False" 
+     .SetPhaseCenterAngularLimit "3.000000e+01" 
+     .SetPhaseCenterComponent "boresight" 
+     .SetPhaseCenterPlane "both" 
+     .ShowPhaseCenter "True" 
+     .ClearCuts 
+     .AddCut "lateral", "0", "1"  
+     .AddCut "lateral", "90", "1"  
+     .AddCut "polar", "90", "1"  
+
+     .StoreSettings
+End With
+
+'@ transform: translate component1:dipole
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+With Transform 
+     .Reset 
+     .Name "component1:dipole" 
+     .Vector "half_wavelength", "0", "0" 
+     .UsePickedPoints "False" 
+     .InvertPickedPoints "False" 
+     .MultipleObjects "True" 
+     .GroupObjects "False" 
+     .Repetitions "9" 
+     .MultipleSelection "False" 
+     .Destination "" 
+     .Material "" 
+     .AutoDestination "True" 
+     .Transform "Shape", "Translate" 
+End With
+
+'@ boolean add shapes: component1:dipole, component1:dipole_1
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Solid.Add "component1:dipole", "component1:dipole_1"
+
+'@ boolean add shapes: component1:dipole_2, component1:dipole_3
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Solid.Add "component1:dipole_2", "component1:dipole_3"
+
+'@ boolean add shapes: component1:dipole_4, component1:dipole_5
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Solid.Add "component1:dipole_4", "component1:dipole_5"
+
+'@ boolean add shapes: component1:dipole_6, component1:dipole_7
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Solid.Add "component1:dipole_6", "component1:dipole_7"
+
+'@ boolean add shapes: component1:dipole_8, component1:dipole_9
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Solid.Add "component1:dipole_8", "component1:dipole_9"
+
+'@ boolean add shapes: component1:dipole, component1:dipole_2
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Solid.Add "component1:dipole", "component1:dipole_2"
+
+'@ boolean add shapes: component1:dipole_4, component1:dipole_6
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Solid.Add "component1:dipole_4", "component1:dipole_6"
+
+'@ boolean add shapes: component1:dipole_4, component1:dipole_8
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Solid.Add "component1:dipole_4", "component1:dipole_8"
+
+'@ boolean add shapes: component1:dipole, component1:dipole_4
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Solid.Add "component1:dipole", "component1:dipole_4"
+
+'@ transform port: translate port1
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+With Transform 
+     .Reset 
+     .Name "port1" 
+     .Vector "half_wavelength", "0", "0" 
+     .UsePickedPoints "False" 
+     .InvertPickedPoints "False" 
+     .MultipleObjects "True" 
+     .GroupObjects "False" 
+     .Repetitions "9" 
+     .MultipleSelection "False" 
+     .Transform "Port", "Translate" 
+End With
+
+'@ change solver type
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+ChangeSolverType "HF Time Domain"
+
+'@ define solver excitation modes
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+With Solver 
+     .ResetExcitationModes 
+     .SParameterPortExcitation "False" 
+     .SimultaneousExcitation "True" 
+     .SetSimultaneousExcitAutoLabel "True" 
+     .SetSimultaneousExcitationLabel "1[1.0,0.0]+2[1.0,0.0]+3[1.0,0.0]+4[1.0,0.0]+5[1.0,0.0]+6[1.0,0.0]+7[1.0,0.0]+..." 
+     .SetSimultaneousExcitationOffset "Phaseshift" 
+     .PhaseRefFrequency "2.4" 
+     .ExcitationSelectionShowAdditionalSettings "False" 
+     .ExcitationPortMode "1", "1", "1.0", "0.0", "default", "True" 
+     .ExcitationPortMode "2", "1", "1.0", "0.0", "default", "True" 
+     .ExcitationPortMode "3", "1", "1.0", "0.0", "default", "True" 
+     .ExcitationPortMode "4", "1", "1.0", "0.0", "default", "True" 
+     .ExcitationPortMode "5", "1", "1.0", "0.0", "default", "True" 
+     .ExcitationPortMode "6", "1", "1.0", "0.0", "default", "True" 
+     .ExcitationPortMode "7", "1", "1.0", "0.0", "default", "True" 
+     .ExcitationPortMode "8", "1", "1.0", "0.0", "default", "True" 
+     .ExcitationPortMode "9", "1", "1.0", "0.0", "default", "True" 
+     .ExcitationPortMode "10", "1", "1.0", "0.0", "default", "True" 
+     .DefineExcitation "simultaneous", "1[1.0,0.0]+2[1.0,0.0]+3[1.0,0.0]+4[1.0,0.0]+5[1.0,0.0]+6[1.0,0.0]+7[1.0,0.0]+...", "1" , "1.0", "0.0", "default", "False" 
+End With
+
+'@ define time domain solver parameters
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+Mesh.SetCreator "High Frequency" 
+
+With Solver 
+     .Method "Hexahedral"
+     .CalculationType "TD-S"
+     .StimulationPort "Selected"
+     .StimulationMode "All"
+     .SteadyStateLimit "-60"
+     .MeshAdaption "False"
+     .AutoNormImpedance "False"
+     .NormingImpedance "50"
+     .CalculateModesOnly "False"
+     .SParaSymmetry "False"
+     .StoreTDResultsInCache  "False"
+     .RunDiscretizerOnly "False"
+     .FullDeembedding "False"
+     .SuperimposePLWExcitation "False"
+     .UseSensitivityAnalysis "False"
+End With
+
+'@ change solver type
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+ChangeSolverType "HF Time Domain"
+
+'@ farfield plot options
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+With FarfieldPlot 
+     .Plottype "Polar" 
+     .Vary "angle2" 
+     .Theta "90" 
+     .Phi "90" 
+     .Step "1" 
+     .Step2 "1" 
+     .SetLockSteps "True" 
+     .SetPlotRangeOnly "False" 
+     .SetThetaStart "0" 
+     .SetThetaEnd "180" 
+     .SetPhiStart "0" 
+     .SetPhiEnd "360" 
+     .SetTheta360 "False" 
+     .SymmetricRange "False" 
+     .SetTimeDomainFF "False" 
+     .SetFrequency "-1" 
+     .SetTime "0" 
+     .SetColorByValue "True" 
+     .DrawStepLines "False" 
+     .DrawIsoLongitudeLatitudeLines "False" 
+     .ShowStructure "False" 
+     .ShowStructureProfile "False" 
+     .SetStructureTransparent "False" 
+     .SetFarfieldTransparent "False" 
+     .AspectRatio "Free" 
+     .ShowGridlines "True" 
+     .InvertAxes "False", "False" 
+     .SetSpecials "enablepolarextralines" 
+     .SetPlotMode "Directivity" 
+     .Distance "1" 
+     .UseFarfieldApproximation "True" 
+     .IncludeUnitCellSidewalls "True" 
+     .SetScaleLinear "False" 
+     .SetLogRange "40" 
+     .SetLogNorm "0" 
+     .DBUnit "0" 
+     .SetMaxReferenceMode "abs" 
+     .EnableFixPlotMaximum "False" 
+     .SetFixPlotMaximumValue "1.0" 
+     .SetInverseAxialRatio "False" 
+     .SetAxesType "user" 
+     .SetAntennaType "unknown" 
+     .Phistart "1.000000e+00", "0.000000e+00", "0.000000e+00" 
+     .Thetastart "0.000000e+00", "0.000000e+00", "1.000000e+00" 
+     .PolarizationVector "0.000000e+00", "1.000000e+00", "0.000000e+00" 
+     .SetCoordinateSystemType "spherical" 
+     .SetAutomaticCoordinateSystem "True" 
+     .SetPolarizationType "Linear" 
+     .SlantAngle 0.000000e+00 
+     .Origin "bbox" 
+     .Userorigin "0.000000e+00", "0.000000e+00", "0.000000e+00" 
+     .SetUserDecouplingPlane "False" 
+     .UseDecouplingPlane "False" 
+     .DecouplingPlaneAxis "X" 
+     .DecouplingPlanePosition "0.000000e+00" 
+     .LossyGround "False" 
+     .GroundEpsilon "1" 
+     .GroundKappa "0" 
+     .EnablePhaseCenterCalculation "False" 
+     .SetPhaseCenterAngularLimit "3.000000e+01" 
+     .SetPhaseCenterComponent "boresight" 
+     .SetPhaseCenterPlane "both" 
+     .ShowPhaseCenter "True" 
+     .ClearCuts 
+     .AddCut "lateral", "0", "1"  
+     .AddCut "lateral", "90", "1"  
+     .AddCut "polar", "90", "1"  
+
+     .StoreSettings
+End With
+
+'@ define solver excitation modes
+
+'[VERSION]2024.0|33.0.1|20230901[/VERSION]
+With Solver 
+     .ResetExcitationModes 
+     .SParameterPortExcitation "False" 
+     .SimultaneousExcitation "True" 
+     .SetSimultaneousExcitAutoLabel "True" 
+     .SetSimultaneousExcitationLabel "1[1,0]+2[1,180]+3[1,0]+4[1,180]+5[1,0]+6[1,180]+7[1,0]+8[1,180]+9[1,0]+10[1,0..." 
+     .SetSimultaneousExcitationOffset "Phaseshift" 
+     .PhaseRefFrequency "2.4" 
+     .ExcitationSelectionShowAdditionalSettings "False" 
+     .ExcitationPortMode "1", "1", "1.0", "0.0", "default", "True" 
+     .ExcitationPortMode "2", "1", "1.0", "180", "default", "True" 
+     .ExcitationPortMode "3", "1", "1.0", "0.0", "default", "True" 
+     .ExcitationPortMode "4", "1", "1.0", "180", "default", "True" 
+     .ExcitationPortMode "5", "1", "1.0", "0.0", "default", "True" 
+     .ExcitationPortMode "6", "1", "1.0", "180", "default", "True" 
+     .ExcitationPortMode "7", "1", "1.0", "0.0", "default", "True" 
+     .ExcitationPortMode "8", "1", "1.0", "180", "default", "True" 
+     .ExcitationPortMode "9", "1", "1.0", "0.0", "default", "True" 
+     .ExcitationPortMode "10", "1", "1.0", "0", "default", "True" 
+     .DefineExcitation "simultaneous", "1[1,0]+2[1,180]+3[1,0]+4[1,180]+5[1,0]+6[1,180]+7[1,0]+8[1,180]+9[1,0]+10[1,0...", "1" , "1.0", "0.0", "default", "False" 
+     .DefineExcitation "simultaneous", "1[1.0,0.0]+2[1.0,0.0]+3[1.0,0.0]+4[1.0,0.0]+5[1.0,0.0]+6[1.0,0.0]+7[1.0,0.0]+...", "1" , "1.0", "0.0", "default", "False" 
+End With
+
